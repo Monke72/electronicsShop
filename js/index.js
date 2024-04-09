@@ -100,9 +100,28 @@ function checkingActiveButtins(bascet) {
     const id = card.dataset.productId;
     const isInBascet = bascet.includes(id); //Проверяем есть ли у bascet id и возвращает true или false
 
-    btn.disabled = isInBascet;
-    btn.classList.toggle("active", isInBascet);
-    btn.textContent = isInBascet ? "В корзине " : "В корзину";
+    if (isInBascet) {
+      btn.classList.add("active");
+      btn.textContent = "В корзине";
+    } else {
+      btn.classList.remove("active");
+      btn.textContent = "В корзину";
+    }
+    const arrJson = JSON.parse(localStorage.getItem("basket"));
+    btn.addEventListener("click", (e) => {
+      arrJson.forEach((num) => {
+        if ((num = id)) {
+          console.log("any");
+        } else {
+          console.log("some");
+        }
+      });
+
+      // btn.classList.toggle("active");
+      // if ((id = arrJson)) {
+      //   localStorage.removeItem(id);
+      // }
+    });
   });
 }
 
